@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhicheng Kai.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -110,7 +110,7 @@ def run_test_practice_problem3():
              st.SimpleTestCase(practice_problem3,
                                [0, 1, 1.414213562373],
                                [286602]),
-             ]
+             ]+[st.SimpleTestCase(practice_problem3,[7,3,0],[7,8,12])]
     # 14th test:
     big_list = []
     for k in range(888, 1888):
@@ -208,8 +208,17 @@ def practice_problem3(start, n, threshold):
       :type n:     int
       :type threshold: float
     """
+    p = []
+    while len(p) < n:
+        a = math.cos(start) + math.sin(start)
+        if a > threshold:
+            p.append(start)
+        start = start + 1
+    return p
+
+
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DO: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ###########################################################################

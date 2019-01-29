@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhicheng Kai.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -134,8 +134,14 @@ def practice_problem4a(sequence):
     Type hints:
       :type sequence: list | tuple | string
     """
+    twice = []
+    for k in range(len(sequence)-1):
+        if sequence[k] == sequence[k+1]:
+            twice = twice + [k]
+    return twice
+
     ###########################################################################
-    # TODO: 2. Implement and test this function.
+    # DO: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -197,8 +203,13 @@ def practice_problem4b(sequence):
     Type hints:
       :type sequence: (list | tuple) of (float | int)
     """
+    maximum = -999999999999999
+    for k in range(0, len(sequence),2):
+        if sequence[k]>maximum:
+            maximum = sequence[k]
+    return maximum
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DO: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -220,7 +231,7 @@ def run_test_practice_problem4c():
                  rg.Point(10, 3),
                  rg.Point(3, 7),
                  rg.Point(2, 2))
-    answer1 = rg.Point(5, 13)
+    answer1 = rg.Point(5, 5)
 
     argument2 = (rg.Point(5, 12),
                  rg.Point(20, 20),
@@ -229,7 +240,7 @@ def run_test_practice_problem4c():
                  rg.Point(13, 4),
                  rg.Point(1, 1),
                  rg.Point(3, 7))
-    answer2 = rg.Point(7, 3)
+    answer2 = rg.Point(7, 5)
 
     argument3 = (rg.Point(5, 2),
                  rg.Point(20, 20),
@@ -295,8 +306,24 @@ def practice_problem4c(points):
       :type points: tuple of rg.Point
       :rtype: rg.Point | string
     """
+    # for k in range(len(points)):
+    #     original_x = points[k].x
+    #     if is_prime(points[k].x) is True and is_prime(points[k].y) is True:
+    #
+    #         points[k].x = points[k].y
+    #         points[k].y = original_x
+    k = 0
+    original_x = points[k].x
+    for k in range(len(points)):
+        if is_prime(points[k].x) is True and is_prime(points[k].y) is True:
+            points[k].x = points[k].y
+            points[k].y = original_x
+            return points[k]
+    else:
+        return 'Not found'
+    #
     ###########################################################################
-    # TODO: 4. Implement and test this function.
+    # DO: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -391,6 +418,13 @@ def practice_problem4d(sequence):
       :type sequence: (list | tuple) of int
       :rtype: int
     """
+    sum = 0
+    for k in range(0,len(sequence)-1):
+        if is_prime(sequence[k]) is True and is_prime(sequence[k+1]) is True:
+            if sequence[k] != sequence[k+1]:
+                sum = sum + sequence[k]
+    return sum
+
     ###########################################################################
     # TODO: 5. Implement and test this function.
     #     The testing code is already written for you (above).

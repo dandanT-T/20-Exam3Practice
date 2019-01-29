@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhicheng Kai.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -37,8 +37,9 @@ def main():
 
 def run_test_doubler():
     """ Tests the    doubler    function. """
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DO: 2. Implement this TEST function.
     #   It TESTS the  doubler  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -80,6 +81,28 @@ def run_test_doubler():
     print('The returned value is:       ', answer)
     print('The returned value should be:', expected)
 
+    # Test 2:
+    arg1 = [5, -3, 2, 4]
+    arg2 = [5, 0, 8, 0]
+    correct_arg1_after = [10, -6, 4, 8]
+    correct_arg2_after = [5, 0, 8, 0]
+    expected = [10, 0, 16, 0]
+
+    print()
+    print('BEFORE the function call:')
+    print('  Argument 1 is:', arg1)
+    print('  Argument 2 is:', arg2)
+
+    answer = doubler(arg1, arg2)
+
+    print('AFTER the function call:')
+    print('  Argument 1 is:       ', arg1)
+    print('  Argument 1 should be:', correct_arg1_after)
+    print('  Argument 2 is:       ', arg2)
+    print('  Argument 2 should be:', correct_arg2_after)
+    print('The returned value is:       ', answer)
+    print('The returned value should be:', expected)
+
     # -------------------------------------------------------------------------
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
     # -------------------------------------------------------------------------
@@ -102,8 +125,14 @@ def doubler(list1, list2):
         :type list1: list of int
         :type list2: list of int
     """
+    List = []
+    for k in range(len(list1)):
+        list1[k] = list1[k]*2
+    for i in range(len(list2)):
+        List = List + [list2[i]*2]
+    return List
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DO: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
