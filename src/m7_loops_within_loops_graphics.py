@@ -6,8 +6,9 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhicheng Kai.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+import math
 
 ###############################################################################
 # Students:
@@ -89,8 +90,37 @@ def hourglass(window, n, point, radius, color):
     where n and radius are positive and color is a string that denotes
     a color that rosegraphics understands.
     """
+    origional_point = rg.Point(point.x,point.y)
+    for k in range(n):
+        for i in range(k+1):
+            line1 = rg.Line(rg.Point(point.x-radius+i*2*radius,point.y),rg.Point(point.x+i*2*radius+radius,point.y))
+            circle1 = rg.Circle(rg.Point(point.x+i*2*radius,point.y),radius)
+            circle1.fill_color = color
+            circle1.attach_to(window)
+            line1.attach_to(window)
+            window.render()
+        point.y = point.y + radius*math.sqrt(3)
+        point.x = origional_point.x-(k+1)*radius
+    point.y = origional_point.y
+    point.x = origional_point.x
+    for k in range(n):
+        for i in range(k + 1):
+            line2 = rg.Line(rg.Point(point.x-radius+i*2*radius,point.y),rg.Point(point.x+i*2*radius+radius,point.y))
+            circle2 = rg.Circle(rg.Point(point.x + i * 2 * radius, point.y), radius)
+            circle2.fill_color = color
+            circle2.attach_to(window)
+            line2.attach_to(window)
+            window.render()
+        point.y = point.y - radius * math.sqrt(3)
+        point.x = origional_point.x - (k + 1) * radius
+
+        # window.render()
+
+            # line = rg.Line(rg.Point(point.x-(k+1)*radius,point.y),rg.Point(point.x+(k+1)*radius,point.y))
+            # line.attach_to(window)
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DO: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -163,8 +193,24 @@ def many_hourglasses(window, square, m, colors):
     where m is positive and colors is a sequence of strings,
     each of which denotes a color that rosegraphics understands.
     """
+    for k in range(m):
+        n = k + 1
+        square.center.x = square.center.x + (2*k+1)*square.length_of_each_side/2
+        p1x = square.center.x - (k+1)*square.length_of_each_side/2
+        p1y = square.center.y - (math.sqrt(3)*(k)+1)*square.length_of_each_side/2
+        p2x = square.center.x + (k + 1) * square.length_of_each_side / 2
+        p2y = square.center.y + (math.sqrt(3)*(k)+1) * square.length_of_each_side/2
+        rectangle = rg.Rectangle(rg.Point(p1x, p1y),rg.Point(p2x,p2y))
+        point = rg.Point(square.center.x,square.center.y)
+        radius = square.length_of_each_side/2
+        color = colors[k%len(colors)]
+        hourglass(window, n, point, radius, color)
+        rectangle.attach_to(window)
+        window.render()
+
+        # rectangle = rg.Rectangle()
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DO: 3. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
